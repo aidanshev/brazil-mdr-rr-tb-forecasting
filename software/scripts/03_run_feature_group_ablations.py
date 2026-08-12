@@ -146,6 +146,7 @@ def main() -> None:
     pd.DataFrame(summaries).to_csv(w / "12_evaluation/feature_group_ablation_bootstrap_summary.csv", index=False)
     selection = {"status": "PASS", "screened_groups": sorted(groups), "retained_count_groups": retained_count, "retained_ranker_groups": retained_ranker, "retention_rule": "paired 95% block-bootstrap interval must exclude zero in beneficial direction", "identical_rows": True, "identical_fold_keys": True, "outer_rows_per_configuration": int(base.shape[0]), "combined_folds": int(base.fold_id.nunique()), "bootstrap_replicates_per_group_metric": args.replicates, "wall_seconds": time.perf_counter() - started}
     json_write(w / "07_screening/feature_group_selection_receipt.json", selection)
+    # Stage summaries show the prespecified successive-halving domains from the same saved OOF rows.
     stage_rows = []
     for config_id, frame in oof.groupby("configuration"):
         temporal_year = frame.fold_id.str.extract(r"temporal_(\d{4})")[0].astype(int)
