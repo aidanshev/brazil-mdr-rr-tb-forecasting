@@ -83,6 +83,7 @@ def chronos_predict(series: dict[str,np.ndarray], requests: pd.DataFrame, local_
 
 
 def foundation_family(name: str, store: pd.DataFrame, indexes: np.ndarray, local_model: Path) -> np.ndarray:
+    # Each request uses only measurements available at its origin.
     ordered=store.sort_values(["health_region_code","forecast_origin"]);series={k:g.rrmdr_sum_1m.fillna(0).to_numpy(float) for k,g in ordered.groupby("health_region_code")};positions={}
     for _,g in ordered.groupby("health_region_code"):
         for pos,idx in enumerate(g.index): positions[int(idx)]=pos
