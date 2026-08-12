@@ -1,0 +1,5 @@
+{
+  "repository": "brazil-mdr-rr-tb-forecasting",
+  "status": "PASS",
+  "output": "PASS: no prohibited images, raw-data extensions, >25MB files, obvious private paths, or token patterns."
+}

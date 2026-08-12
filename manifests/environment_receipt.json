@@ -1,0 +1,21 @@
+{
+  "authoritative_compute": "Mac/external-drive CPU",
+  "cpu_count": 8,
+  "cuda_available": false,
+  "executable": "/opt/anaconda3/bin/python",
+  "git_branch": "v16-exhaustive-data-and-accelerator-completion",
+  "machine": "arm64",
+  "packages": {
+    "duckdb": "1.5.4",
+    "geopandas": "1.1.4",
+    "lightgbm": "4.7.0",
+    "numpy": "1.26.4",
+    "pandas": "2.3.1",
+    "pyarrow": "14.0.2",
+    "sklearn": "1.8.0",
+    "statsmodels": "0.14.0"
+  },
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "processor": "arm",
+  "python": "3.11.7 (main, Dec 15 2023, 12:09:56) [Clang 14.0.6 ]"
+}

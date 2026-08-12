@@ -1,0 +1,3 @@
+# Results input
+
+The validated analysis contains 439 health regions, 5,570 municipalities, 26,340 unique combined-fold OOF rows per model, and 25 combined folds. Eighteen count candidates were fully evaluated locally. The retained count product is `simple_median_ensemble` with standard WIS 0.1898559969899358. The point-leading ETS-style challenger reached WIS 0.17754854105651371, but its paired interval against the retained ensemble crossed zero. Recent burden captured 0.29086801056826816 of positive future excess at the 5% budget. Allocation utility is reported over a prespecified parameter grid; it is scenario analysis, not observed intervention benefit.

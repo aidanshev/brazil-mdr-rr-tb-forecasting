@@ -1,0 +1,17 @@
+{
+  "data_cutoff": "2025-12-01",
+  "files": {
+    "health_region_forecasts.csv": {"sha256": "f4ede3c34e7e926a81566638e7814142fd4db465a9a4d4bc7622bbd4eb05c764","size_bytes":153917},
+    "health_region_forecasts.parquet": {"sha256": "5d28de01326ca9f0b760373975e22a65c2fbe3937d681a966e20b558503b4afd","size_bytes":44523},
+    "model/calibration.json": {"sha256":"9b0866bb77317d4cc2a039847a939427afd1b3b7663239626d1e192837c27e4d","size_bytes":283},
+    "model/catboost_poisson.pkl": {"sha256":"8b6fcdaef7096c09fc8d4f2c55911d7709ee3d84b2177559098adb1642588aca","size_bytes":405186},
+    "model/feature_list.json": {"sha256":"19c4d4f7301e56d08340debc699b30885db1301ffb7997a15077e899d2f42e3f","size_bytes":2251},
+    "model/v10_lightgbm_fixed.pkl": {"sha256":"c7b818156fe3f15ac05ac5e8f1556a93a0ea1258ba43f1fe6bd9901bb7b9ed72","size_bytes":180896},
+    "model/xgboost_poisson.pkl": {"sha256":"80f8166f478fee88e31a133dd7de2ad7043609a28a8a1627b535279ffce4fe68","size_bytes":573480},
+    "model_card.json": {"sha256":"2efae088cde980a7cdd49689a9eab018619d21dd6efdb514db242ec539237537","size_bytes":702},
+    "release_notes.md": {"sha256":"0fc8ac26e006195446c7d195948cbfabfc2ff212f13a33f06f4863854af87408","size_bytes":405},
+    "top_hotspots.csv": {"sha256":"d048ad7137fc874aef34819872362196239db82c617e6d747c546c1f23767e80","size_bytes":8600}
+  },
+  "release_status": "PSEUDO_PROSPECTIVE_LOCKED",
+  "source_hashes": {"feature_dictionary.csv":"640be0519658075205f42576a0e8a3259c7bd45fa14f8c4b24b93e4adf4a85ee","health_region_feature_store.parquet":"eca3bd8eaa446338f6e6ec800f5167c4f551e5ee3d5dce4a0b4114fb5bd725d0"}
+}

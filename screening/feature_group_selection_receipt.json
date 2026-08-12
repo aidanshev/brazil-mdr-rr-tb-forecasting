@@ -1,0 +1,13 @@
+{
+  "bootstrap_replicates_per_group_metric": 1000,
+  "combined_folds": 25,
+  "identical_fold_keys": true,
+  "identical_rows": true,
+  "outer_rows_per_configuration": 26340,
+  "retained_count_groups": [],
+  "retained_ranker_groups": [],
+  "retention_rule": "paired 95% block-bootstrap interval must exclude zero in beneficial direction",
+  "screened_groups": ["F1","F4","F5","F8","F9"],
+  "status": "PASS",
+  "wall_seconds": 614.4554896250484
+}

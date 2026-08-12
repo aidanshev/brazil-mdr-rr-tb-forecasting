@@ -1,0 +1,3 @@
+# Results and claim boundary
+
+The target is future detected/reported RR/MDR-positive surveillance burden, not latent incidence, transmission, or true resistant-disease burden. The final V16 source disposition retains SINAN-TB and geography/population as predictive source families; other sources were screened, rejected, contextual, or documentary. The public repository preserves the negative operational result that simple recent-burden prioritization can outperform a learned ranker at the primary review budget and preserves subgroup uncertainty/coverage limitations. A frozen 2026 release is pseudo-prospective evidence, not completed prospective validation.

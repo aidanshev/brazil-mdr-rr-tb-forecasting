@@ -1,0 +1,3 @@
+definition,event_rows,event_episodes,event_sensitivity,event_ppv,mean_lead_months_to_target_start
+outbreak_event_90,206,93,0.6456310679611651,0.10075757575757575,1.0
+outbreak_event_95,68,34,0.7205882352941176,0.037121212121212124,1.0

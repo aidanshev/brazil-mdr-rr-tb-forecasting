@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the associated manuscript and archived release."
+title: "Brazil RR/MDR-TB Health-Region Forecasting"
+type: software
+authors:
+  - family-names: "Shev"
+    given-names: "Aidan"
+repository-code: "https://github.com/aidanshev/brazil-mdr-rr-tb-forecasting"
+version: "1.0.0"
+date-released: "2026-08-11"

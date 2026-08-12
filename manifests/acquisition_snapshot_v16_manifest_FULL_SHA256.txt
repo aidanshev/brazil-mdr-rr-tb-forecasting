@@ -1,0 +1,4 @@
+97f182b244531333842ac0b392db70dffdadf897941229b56ccb812346588def  acquisition_snapshot_v16_manifest_PUBLIC.csv
+rows=19960
+bytes=3944341
+The 19,960-row file-level source inventory is intentionally not mirrored to GitHub; this hash anchors the complete sanitized manifest retained in the project handoff.

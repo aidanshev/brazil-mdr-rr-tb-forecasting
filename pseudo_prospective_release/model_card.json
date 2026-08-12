@@ -1,0 +1,16 @@
+{
+  "status": "PSEUDO_PROSPECTIVE_LOCKED",
+  "is_genuine_future_forecast": false,
+  "reason_not_genuine": "The validated source snapshot ends 2025-12; the 2026-01 through 2026-03 target window is already in the past at build time.",
+  "forecast_origin": "2025-12-01",
+  "target_window": ["2026-01-01","2026-03-01"],
+  "rows": 439,
+  "regions": 439,
+  "training_rows": 51363,
+  "training_target_end_max": "2025-12-01",
+  "component_models": ["v10_lightgbm_fixed","xgboost_poisson","catboost_poisson"],
+  "count_product": "simple_median_ensemble",
+  "ranking_product": "recent 3-month RR/MDR burden",
+  "top_5pct_regions": 22,
+  "prospective_outcomes_used_in_fit": false
+}

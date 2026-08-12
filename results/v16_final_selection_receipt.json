@@ -1,0 +1,17 @@
+{
+  "allocation_status": "IMPLEMENTED_REPRODUCIBLE_GRID",
+  "bootstrap_replicates": 5000,
+  "combined_folds": 25,
+  "count_claim": "NO_DEFINITIVE_IMPROVEMENT_INTERVAL_INCLUDES_ZERO",
+  "count_point_winner": "ets_local_level_seasonal",
+  "final_count_model": "simple_median_ensemble",
+  "final_ranking_model": "recent_burden",
+  "model_families_fully_evaluated": 18,
+  "paired_WIS_difference_candidate_minus_simple_median_CI": [-0.0885032664231201,0.024819859450917962],
+  "paired_top5_difference_candidate_minus_recent_CI": [0.0,0.0],
+  "rankers_fully_evaluated": 4,
+  "ranking_claim": "RECENT_BURDEN_RETAINED_NO_CREDIBLE_CHALLENGER_WIN",
+  "ranking_point_winner": "farrington_standardized_excess",
+  "rows_per_model": 26340,
+  "status": "COMPLETE_MAC_AUTHORITATIVE_LOCAL"
+}

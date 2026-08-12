@@ -1,0 +1,45 @@
+# Restricted/raw source data
+data/raw/
+raw/
+*.dbc
+*.dbf
+*.pbf
+*.rda
+*.RData
+*.sav
+*.sas7bdat
+# Images/media intentionally excluded
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.gif
+*.bmp
+*.webp
+*.svg
+*.pdf
+# Bulky/model artifacts
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.zip
+*.tar
+*.tar.gz
+*.7z
+# Local/cache
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.env
+*.sqlite
+*.sqlite3
+secrets/
+private/

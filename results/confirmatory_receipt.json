@@ -1,0 +1,9 @@
+{
+  "bootstrap_replicates": 1000,
+  "outer_population_unaltered": true,
+  "real_frozen_data": true,
+  "saved_draws": "bootstrap_draws.parquet",
+  "selected_count": "simple_median_ensemble",
+  "selected_ranking": "recent_burden",
+  "status": "COMPLETE"
+}

@@ -1,0 +1,18 @@
+source_group,feature_group,disposition,ranker_use,reason
+SINAN_TB,F0,RETAINED_IN_FINAL_MODEL,True,V15 exact reconciled national surveillance core; reverified by hash.
+GEOGRAPHY_POPULATION,F0,RETAINED_IN_FINAL_MODEL,True,"Locked 5,570-municipality, 439-region analytical geography and origin-safe denominators."
+CNES,F1,SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT,False,"Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit."
+SIA_OUTPATIENT,F2,REQUEST_REQUIRED_NOT_AVAILABLE,False,No validated national SIA extract found locally after exact-path census.
+SIH_HOSPITAL,F3,REQUEST_REQUIRED_NOT_AVAILABLE,False,No validated national SIH extract found locally after exact-path census.
+SIM_MORTALITY,F4,SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT,False,"Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit."
+APS_PMMB_PREVINE_UBS,F5,SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT,False,"Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit."
+SISDEPEN,F6,RETAINED_FOR_PROSPECTIVE_CONTEXT_ONLY,False,Only a 2025-2 wave retrieved in 2026; insufficient retrospective temporal coverage.
+CENSUS_SOCIAL_ECONOMIC,F7,RETAINED_FOR_PROSPECTIVE_CONTEXT_ONLY,False,Census 2022 municipal aggregate releases staged in 2025-2026 cannot be backfilled into earlier origins.
+REGIC_MOBILITY,F8,SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT,False,"Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit."
+CLIMATE,F9,SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT,False,"Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit."
+LAND_USE_OTHER,F10,EXCLUDED_INVALID_OR_JUNK,False,No specifically validated origin-aligned analytical land-use/transport series; broad-crawl assets are invalid.
+GENOMICS,F10,EXCLUDED_INSUFFICIENT_TEMPORAL_COVERAGE,False,Search-page assets do not form a representative origin-safe regional genomic panel.
+WHO_CONTEXT,CONTEXT,RETAINED_FOR_PROSPECTIVE_CONTEXT_ONLY,False,"WHO Global TB Report 2025 is national context, not a subnational predictive feature."
+V10_REFERENCE,REFERENCE,EXCLUDED_DUPLICATE_OR_SUPERSEDED,False,Exact V10 baseline is registered; V15/V16 canonical artifacts supersede duplicate copies.
+V13_V14_V15_REFERENCE,REFERENCE,EXCLUDED_DUPLICATE_OR_SUPERSEDED,False,V15 is the immutable validated baseline; older duplicate packages are lineage only.
+OTHER_AUDIT_ASSET,NONE,EXCLUDED_INVALID_OR_JUNK,False,Non-analytical software/cache/web assets are retained only in the census.

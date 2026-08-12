@@ -1,0 +1,18 @@
+{
+  "NDCG_recent_burden": 0.4142964805730142,
+  "all_CIs_map_to_saved_draws": true,
+  "bootstrap_replicates": 1000,
+  "bootstrap_units": ["health_region","calendar_quarter"],
+  "combined_spatiotemporal_WIS": 0.1898559969899358,
+  "final_hotspot_product": "recent_burden",
+  "final_probabilistic_product": "simple_median_ensemble",
+  "hotspot_evidence_label": "RETROSPECTIVELY_VALIDATED_FOR_HOTSPOT_RANKING",
+  "paired_WIS_difference_CI": [-0.010275122029602483,0.006103393858337204],
+  "paired_top5_difference_CI": [-0.4426871252942959,0.7242003537800874],
+  "probabilistic_evidence_label": "RETROSPECTIVELY_VALIDATED_FOR_PROBABILISTIC_FORECASTING",
+  "probabilistic_selection_note": "Retain the simple median only if its point WIS is lower; the paired interval is reported and uncertainty is not hidden.",
+  "recent_burden_honestly_retained": true,
+  "top5_capture_best_modeled_challenger": 0.2804700078449567,
+  "top5_capture_recent_burden": 0.29086801056826816,
+  "v10_fixed_combined_spatiotemporal_WIS": 0.19096144137648002
+}
