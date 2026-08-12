@@ -121,3 +121,4 @@ def environment_receipt() -> dict[str, object]:
         "cuda_available": False,
         "authoritative_compute": "Mac/external-drive CPU",
     }
+
