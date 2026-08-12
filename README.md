@@ -22,6 +22,13 @@ python tools/public_release_audit.py
 - `docs/`: protocols/methods
 - `REPOSITORY_STATUS.md`: completeness status
 
+## Publication documentation
+
+- `PUBLICATION_READINESS.md`: exact reproducibility and completeness boundary
+- `CODE_AVAILABILITY.md`: manuscript-ready Code Availability language
+- `RELEASE_CHECKLIST.md`: completed and remaining archival steps
+- `CITATION.cff`: repository citation metadata
+
 ## Archival DOI
 
-After the GitHub tree is complete, tag `v1.0.0`, create a GitHub Release, archive that release with Zenodo or an equivalent preservation service, and add the DOI to this README, `CITATION.cff`, and the manuscript.
+After the final code/manuscript reconciliation and license decision, create an immutable Git tag and GitHub Release, archive that release with Zenodo or an equivalent preservation service, and add the resulting DOI to this README, `CITATION.cff`, and the manuscript.
