@@ -35,6 +35,7 @@ def count_metrics(frame: pd.DataFrame) -> dict[str, float]:
     for level, lo, hi in ((50,25,75),(80,10,90),(90,5,95)):
         result[f"coverage_{level}"] = float(np.mean((y >= frame[f"q{lo:02d}"]) & (y <= frame[f"q{hi:02d}"])))
         result[f"interval_width_{level}"] = float(np.mean(frame[f"q{hi:02d}"] - frame[f"q{lo:02d}"]))
+    # 95% is conservatively approximated from the widest independently saved interval.
     result["coverage_95_approx"] = result["coverage_90"]
     result["interval_width_95_approx"] = result["interval_width_90"]
     levels=np.array([.05,.10,.25,.50,.75,.90,.95]); qs=frame[["q05","q10","q25","q50","q75","q90","q95"]].to_numpy(float)
@@ -134,6 +135,7 @@ def main() -> None:
     for dimension in ("year","macroregion","burden_stratum","testing_stratum","completeness_stratum"):
         for level,f in enriched.groupby(dimension,observed=True): subgroup_rows.append({"model":final_count,"dimension":dimension,"level":level,**count_metrics(f)})
     pd.DataFrame(subgroup_rows).to_csv(w/"12_evaluation/final_count_subgroup_metrics.csv",index=False)
+    # Final source decisions are evidence based and retain all excluded groups in the accounting table.
     dispositions=pd.read_csv(w/"00_control/source_usage_disposition.csv");mask=dispositions.disposition.eq("SCREEN_PENDING");dispositions.loc[mask,"disposition"]="SCREENED_AND_REJECTED_NO_HELD_OUT_BENEFIT";dispositions.loc[mask,"reason"]="Origin-safe add-one/remove-one evaluation completed on identical combined folds; paired 1,000-draw confirmation did not show credible benefit.";dispositions.to_csv(w/"00_control/source_usage_disposition.csv",index=False)
     selection={"status":"COMPLETE_MAC_AUTHORITATIVE_LOCAL","final_count_model":final_count,"count_point_winner":candidate_name,"paired_WIS_difference_candidate_minus_simple_median_CI":ci_count.tolist(),"count_claim":"DIFFERENCE_CREDIBLE" if ci_count[1]<0 else "NO_DEFINITIVE_IMPROVEMENT_INTERVAL_INCLUDES_ZERO","final_ranking_model":final_rank,"ranking_point_winner":rank_candidate_name,"paired_top5_difference_candidate_minus_recent_CI":ci_rank.tolist(),"ranking_claim":"DIFFERENCE_CREDIBLE" if ci_rank[0]>0 else "RECENT_BURDEN_RETAINED_NO_CREDIBLE_CHALLENGER_WIN","bootstrap_replicates":5000,"allocation_status":"IMPLEMENTED_REPRODUCIBLE_GRID","rows_per_model":int(len(baseline)),"combined_folds":int(baseline.fold_id.nunique()),"model_families_fully_evaluated":int(counts.model.nunique()),"rankers_fully_evaluated":int(ranks.model.nunique())}
     json_write(w/"12_evaluation/v16_final_selection_receipt.json",selection);json_write(w/"12_evaluation/allocation_utility_receipt.json",{"status":"PASS","grid_rows":len(allocation),"policies":sorted(allocation.policy.unique()),"equity_constraints":[False,True],"deterministic_seed":SEED})
