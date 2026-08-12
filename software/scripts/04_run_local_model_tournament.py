@@ -103,6 +103,7 @@ def main() -> None:
     folds=pd.read_parquet(w/"06_folds/combined_spatiotemporal_folds.parquet"); dictionary=pd.read_csv(w/"04_point_in_time_features/feature_dictionary.csv")
     features=[c for c in dictionary.feature.astype(str) if c in store and pd.api.types.is_numeric_dtype(store[c])]
     matrix=store[features].replace([np.inf,-np.inf],np.nan).to_numpy(float); target=store.observed_future_rrmdr_count_3m.to_numpy(float)
+    # Parsimonious covariate sets for surveillance/statistical challengers.
     hhh_names=[c for c in ["rrmdr_sum_1m","rrmdr_sum_3m","rrmdr_sum_6m","rrmdr_sum_12m","tests_sum_3m","notifications_sum_3m","sin_month","cos_month","proportion_municipalities_reporting"] if c in store]
     hhh_matrix=store[hhh_names].replace([np.inf,-np.inf],np.nan).to_numpy(float)
     gam_names=[c for c in ["rrmdr_sum_1m","rrmdr_sum_3m","rrmdr_sum_12m","tests_sum_3m","notifications_sum_3m","month","sin_month","cos_month"] if c in store]
@@ -135,6 +136,7 @@ def main() -> None:
             outputs.append(out)
         print(f"local_models fold={fold_id}",flush=True)
     oof=pd.concat(outputs,ignore_index=True).merge(context,on=["forecast_origin","health_region_code","fold_id"],how="left",validate="many_to_one"); oof["predicted_excess"]=oof["mean"]-oof["negative_binomial_counterfactual_mean"]
+    # Add deterministic full-fold baselines without refitting.
     deterministic=[]
     for model_name, values in {
         "zero": np.zeros(len(store)),
@@ -152,6 +154,7 @@ def main() -> None:
             for name,v in qs.items():out[name]=v
             deterministic.append(out)
     deterministic=pd.concat(deterministic,ignore_index=True).merge(context,on=["forecast_origin","health_region_code","fold_id"],how="left",validate="many_to_one");deterministic["predicted_excess"]=deterministic["mean"]-deterministic["negative_binomial_counterfactual_mean"]
+    # Reuse the independently verified V10 negative-binomial forecast, remapped to the exact combined keys.
     v10=pd.read_parquet(w.parent/"BRAZIL_MDRTB_V10_FOCUSED/06_predictions/rolling_origin_predictions.parquet")
     v10=v10[v10.feature_set_id.eq("F0")][["forecast_origin","health_region_code","observed_future_count","negative_binomial_mean","nb_q05","nb_q10","nb_q25","nb_q50","nb_q75","nb_q90","nb_q95"]].copy();v10["health_region_code"]=v10.health_region_code.astype(str)
     nb=context.merge(v10,on=["forecast_origin","health_region_code"],how="left",validate="many_to_one");nb["model"]="negative_binomial_v10_reverified";nb["observed"]=nb.observed_future_count;nb["mean"]=nb.negative_binomial_mean
@@ -163,6 +166,7 @@ def main() -> None:
     for model,frame in oof.groupby("model"):
         metrics.append({"model":model,"rows":len(frame),"folds":frame.fold_id.nunique(),"standard_WIS":standard_wis(frame),"top5_capture":capture(frame,"predicted_excess"),"coverage_80":float(frame.observed.between(frame.q10,frame.q90).mean()),"coverage_90":float(frame.observed.between(frame.q05,frame.q95).mean())})
     leaderboard=pd.DataFrame(metrics).sort_values("standard_WIS");leaderboard.to_csv(w/"07_screening/v16_local_model_leaderboard.csv",index=False)
+    # Full combined-fold LambdaMART ranking and transparent operational scores.
     relevance=np.maximum(target-store.prior_year_same_quarter_burden.fillna(0).to_numpy(float),0);rank_outputs=[]
     for fold_id in sorted(folds.fold_id.unique()):
         role=folds[folds.fold_id.eq(fold_id)].set_index("row_id").role; train=role.index[role.eq("train")].to_numpy(int); test=role.index[role.eq("test")].to_numpy(int);train=train[np.isfinite(target[train])];test=test[np.isfinite(target[test])]
@@ -184,6 +188,7 @@ def main() -> None:
     for model,frame in rank_oof.groupby("model"):
         rank_metrics.append({"model":model,"rows":len(frame),"folds":frame.fold_id.nunique(),"top1_capture":capture(frame,"score",0.01),"top2_capture":capture(frame,"score",0.02),"top5_capture":capture(frame,"score",0.05),"top10_capture":capture(frame,"score",0.10),"top20_capture":capture(frame,"score",0.20),"NDCG":ndcg(frame,"score")})
     pd.DataFrame(rank_metrics).sort_values("top5_capture",ascending=False).to_csv(w/"07_screening/v16_ranker_leaderboard.csv",index=False)
+    # Exact R hhh4 availability is recorded separately from the evaluated hhh4-style Python challenger.
     check=subprocess.run(["Rscript","-e","quit(status=ifelse(requireNamespace('surveillance',quietly=TRUE),0,2))"],capture_output=True)
     json_write(w/"08_full_models/hhh4_failure_receipt.json",{"status":"EXPLICIT_FAILURE" if check.returncode else "PACKAGE_AVAILABLE_NOT_USED","model":"exact_R_surveillance_hhh4","reason":"R surveillance package unavailable in the frozen environment" if check.returncode else "exact package became available after gate","evaluated_alternative":"hhh4_style_endemic_epidemic","return_code":check.returncode})
     projected=first_fold_total*25/3600
