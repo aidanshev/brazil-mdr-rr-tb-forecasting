@@ -1,5 +1,25 @@
 {
-  "repository": "brazil-mdr-rr-tb-forecasting",
+  "repository": "aidanshev/brazil-mdr-rr-tb-forecasting",
   "status": "PASS",
-  "output": "PASS: no prohibited images, raw-data extensions, >25MB files, obvious private paths, or token patterns."
+  "audit_basis_commit": "0e908c6d698e948016c5195ee3ab54737b636e6c",
+  "scope_note": "This audit covers the repository tree at the basis commit. The subsequent commit changes only this audit receipt.",
+  "remote_tree_checks": {
+    "temporary_upload_fragments": 0,
+    "png_files": 0,
+    "jpg_files": 0,
+    "jpeg_files": 0,
+    "tif_files": 0,
+    "svg_files": 0,
+    "pdf_files": 0,
+    "dbc_files": 0,
+    "dbf_files": 0
+  },
+  "publication_boundary": {
+    "patient_or_line_level_surveillance_data_published": false,
+    "third_party_raw_images_published": false,
+    "source_sites_documented": true,
+    "full_19960_row_sanitized_source_inventory_published": false,
+    "full_source_inventory_sha256_anchored": true
+  },
+  "result": "PASS: remote public tree contains the intended publication-safe code/results/provenance payload and no prohibited raw image or listed raw surveillance file extensions."
 }
